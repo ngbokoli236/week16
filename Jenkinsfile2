@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('sonarqube scan'){
             steps{
-                sh 'mvn sonsr:sonar'
+                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ngbokoli236_week16'
             }
         }
         stage('maven commands'){
@@ -17,4 +17,4 @@ pipeline{
         
     }
     
-}
+} 
