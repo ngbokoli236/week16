@@ -4,6 +4,7 @@ pipeline{
         maven 'M2_HOME'
     }
     stages{
+        agent {docker { image 'maven:3-amazoncorretto-17-debian' }}
         stage('sonarqube scan'){
             steps{
               withSonarQubeEnv('sonarserver'){
