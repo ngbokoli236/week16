@@ -24,6 +24,20 @@ pipeline{
             sh 'curl -uadmin:AP7p7nvZhja4Q56MfesoZ2aMuqV -T target/bio*.jar "http://44.201.250.172:8081/artifactory/geoapp/"'
         }
     }
+    stage('image build'){
+        steps{
+            sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 171720733763.dkr.ecr.us-east-1.amazonaws.com'
+            sh 'docker build -t geoapp .'
+        } 
+            
+        }
+        stage('push image'){
+            steps{
+                sh 'docker tag geoapp:latest 171720733763.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+                sh 'docker push 171720733763.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
+            }
+        }
+    }
         
     }
     
