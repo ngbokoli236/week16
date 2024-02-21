@@ -37,7 +37,6 @@ pipeline{
                 sh 'docker push 171720733763.dkr.ecr.us-east-1.amazonaws.com/geoapp:latest'
             }
         }
-    }
-        
-    }
- }   
+    }        
+}
+    
